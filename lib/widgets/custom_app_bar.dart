@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:notes/widgets/custom_icon.dart';
 
 class customAppBar extends StatelessWidget {
-  const customAppBar({super.key});
-
+  const customAppBar({super.key, this.icon});
+  final IconData? icon;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -13,7 +13,7 @@ class customAppBar extends StatelessWidget {
           "Notes",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
         ),
-        customIcon(),
+        customIcon(icon: icon),
       ],
     );
   }

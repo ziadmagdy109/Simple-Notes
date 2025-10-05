@@ -3,8 +3,8 @@ import 'package:notes/widgets/add_note_bottom_sheet.dart';
 import 'package:notes/widgets/custom_app_bar.dart';
 import 'package:notes/widgets/notes_list_view.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class NotesView extends StatelessWidget {
+  const NotesView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +15,13 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: 30),
-              customAppBar(),
-              Expanded(child: NotesListView()),
+              customAppBar(icon: Icons.search),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 30, bottom: 8),
+                  child: NotesListView(),
+                ),
+              ),
             ],
           ),
         ),
