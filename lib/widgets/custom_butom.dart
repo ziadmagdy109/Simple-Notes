@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:notes/constants.dart';
 
 class CustomButom extends StatelessWidget {
-  const CustomButom({super.key, this.ontap});
+  const CustomButom({super.key, this.ontap, this.isLoading = false});
   final void Function()? ontap;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -16,14 +17,16 @@ class CustomButom extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
-          child: Text(
-            "Add",
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-            ),
-          ),
+          child: isLoading
+              ? CircularProgressIndicator(color: Colors.black)
+              : Text(
+                  "Add",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
+                ),
         ),
       ),
     );
