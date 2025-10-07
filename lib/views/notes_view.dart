@@ -1,34 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/cubits/notes/cubit/all_notes_cubit.dart';
+import 'package:notes/views/notes_view_body.dart';
 import 'package:notes/widgets/add_note_bottom_sheet.dart';
-import 'package:notes/widgets/custom_app_bar.dart';
-import 'package:notes/widgets/notes_list_view.dart';
 
-class NotesView extends StatelessWidget {
+class NotesView extends StatefulWidget {
   const NotesView({super.key});
 
+  @override
+  State<NotesView> createState() => _NotesViewState();
+}
+
+class _NotesViewState extends State<NotesView> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: BlocProvider(
         create: (context) => AllNotesCubit(),
         child: Scaffold(
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              children: [
-                SizedBox(height: 30),
-                customAppBar(icon: Icons.search),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 30, bottom: 8),
-                    child: NotesListView(),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          body: NotesViewBody(),
+          resizeToAvoidBottomInset: false,
           floatingActionButton: FloatingActionButton(
             onPressed: () {
               showModalBottomSheet(
